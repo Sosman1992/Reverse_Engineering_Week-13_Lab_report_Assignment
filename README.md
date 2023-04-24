@@ -1,5 +1,5 @@
 # Shellcode Creation
-https://wajid-nawazish.medium.com/developing-custom-shellcode-in-x64-57172a885d77,https://wajid-nawazish.medium.com/developing-custom-shellcode-in-x64-57172a885d77,https://masterccc.github.io/memo/shellcode/
+
 The Week's Assignment and Lab focuses on experimenting with creating Linux shellcode in x86_64 assembly.
 
 ---

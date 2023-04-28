@@ -31,6 +31,10 @@ _start:
 ## 2) A step-by-step explanation of your assembly code and how it sets up the system call
 
 In the above code SECTION .data is where you store the data or define static variables. But since we are in need of op-codes, we cannot define a variable because variables do not have op-codes. So, we need to push the data directly to register. The SECTION .text is the section where we put our code at. We also have other sections such as SECTION .bss which is used for variables that are not initialized and are used to store user’s input data and etc.
+`section .text` declares the section of the code as text and `global _start` declares the label "_start" as global, so that it can be accessed from 
+outside the file. In addition `_start` is the entry point for the code. Also the instruction `xor rax, rax`,`xor rdi, rdi` ,`xor rsi, rsi` and `xor rdx, rdx` clears the rax, rdi, rsi and rdx registers respectively. Furthermore, the instruction `mov rdi, 0x0068732f6e69622f` stores the string "/bin/sh" in rdi in hexadecimal format. Moreover `mov al, 0x3b` sets rax to the value of the "execve syscall number". Lastly, `syscall` executes the  execve syscall to execute the shell.
+
+
 
 ## 3) Report on how many bytes total are in your assembly, and include the whole thing in ascii
 

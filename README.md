@@ -8,7 +8,7 @@ The Week's Assignment and Lab focuses on experimenting with creating Linux shell
 
 ## 1) A code block containing my assembly instructions for your shellcode
 
-'''
+```
 .section .data
 .section .text
     .global _start
@@ -26,7 +26,7 @@ _start:
     xor %rsi, %rsi
     xor %rdx, %rdx
     syscall
-'''
+```
 
 ## 2) A step-by-step explanation of your assembly code and how it sets up the system call
 

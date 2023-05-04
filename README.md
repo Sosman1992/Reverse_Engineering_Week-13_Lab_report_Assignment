@@ -13,19 +13,28 @@ The Week's Assignment and Lab focuses on experimenting with creating Linux shell
 .global _start
 
 _start:
-
-pushq $0
-movq %rsp, %rdx
-push %rdx
-movq %rsp, %rsi
-movq %rsp, %rdx
-movq $0x0068732F6E69622F, %rax
-pushq %rax
-movq %rsp, %rdi
-movq $0x3B, %rax
-movq $0x3B, %rbx
-syscall
-
+    # push 0 onto the stack
+    pushq $0
+    # save the current stack pointer in rdx
+    movq %rsp, %rdx
+    # push rdx onto the stack
+    pushq %rdx
+    # save the current stack pointer in rsi
+    movq %rsp, %rsi
+    # save the current stack pointer in rdx again
+    movq %rsp, %rdx
+    # load the string "/bin/sh" into rax
+    movq $0x0068732F6E69622F, %rax
+    # push the string onto the stack
+    pushq %rax
+    # save the address of the string in rdi
+    movq %rsp, %rdi
+    # set rax to 59 (the system call number for execve)
+    movq $59, %rax
+    # set rbx to 59 (arbitrary value)
+    movq $59, %rbx
+    # make the system call
+    syscall
 ```
 
 ## 2) A step-by-step explanation of your assembly code and how it sets up the system call

@@ -9,23 +9,23 @@ The Week's Assignment and Lab focuses on experimenting with creating Linux shell
 ## 1) A code block containing my assembly instructions for your shellcode
 
 ```
-.section .data
 .section .text
-    .global _start
+.global _start
 
 _start:
-    xor %rax, %rax
-    xor %rdi, %rdi
-    mov $0x0b, %al
 
-    push %rdi
-    mov $0x68732f6e69622f2f, %rdi
-    push %rdi
-    mov %rsp, %rdi
+pushq $0
+movq %rsp, %rdx
+push %rdx
+movq %rsp, %rsi
+movq %rsp, %rdx
+movq $0x0068732F6E69622F, %rax
+pushq %rax
+movq %rsp, %rdi
+movq $0x3B, %rax
+movq $0x3B, %rbx
+syscall
 
-    xor %rsi, %rsi
-    xor %rdx, %rdx
-    syscall
 ```
 
 ## 2) A step-by-step explanation of your assembly code and how it sets up the system call

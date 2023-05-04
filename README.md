@@ -13,28 +13,25 @@ The Week's Assignment and Lab focuses on experimenting with creating Linux shell
 .global _start
 
 _start:
-    # push 0 onto the stack
+    # push a 64-bit zero onto the stack
     pushq $0
-    # save the current stack pointer in rdx
+    # save the current stack pointer in rdx and push it onto the stack
     movq %rsp, %rdx
-    # push rdx onto the stack
     pushq %rdx
-    # save the current stack pointer in rsi
+    # save the current stack pointer in rsi and rdx
     movq %rsp, %rsi
-    # save the current stack pointer in rdx again
     movq %rsp, %rdx
-    # load the string "/bin/sh" into rax
-    movq $0x0068732F6E69622F, %rax
-    # push the string onto the stack
+    # load the string "/bin/sh" into rax and push it onto the stack
+    movabsq $0x0068732F6E69622F, %rax
     pushq %rax
     # save the address of the string in rdi
     movq %rsp, %rdi
-    # set rax to 59 (the system call number for execve)
+    # set rax to 59 (the system call number for execve) and rbx to an arbitrary value
     movq $59, %rax
-    # set rbx to 59 (arbitrary value)
-    movq $59, %rbx
+    xorq %rbx, %rbx
     # make the system call
     syscall
+
 ```
 
 ## 2) A step-by-step explanation of your assembly code and how it sets up the system call
@@ -47,7 +44,7 @@ outside the file. In addition `_start` is the entry point for the code. Also the
 
 ## 3) Report on how many bytes total are in your assembly, and include the whole thing in ascii
 
-My shellcode is 41 bytes long. Here they are: 48 31 c0 48 31 ff b0 3b 57 48 bf 2f 2f 62 69 6e 2f 73 68 57 48 89 e7 48 31 f6 48 31 d2 0f 05 
+My shellcode is 38 bytes long. Here they are: 48 31 c0 48 31 ff b0 3b 57 48 bf 2f 2f 62 69 6e 2f 73 68 57 48 89 e7 48 31 f6 48 31 d2 0f 05 
 **ASCII:** 
 
 ## 4) Explanation of what I did to ensure there were no NULL bytes in my code

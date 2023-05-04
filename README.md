@@ -41,10 +41,10 @@ In the above code SECTION .data is where you store the data or define static var
 outside the file. In addition `_start` is the entry point for the code. The instruction pushq $0 pushes a 64-bit zero onto the stack. This is needed as the first argument to the execve system call later. Also, the instruction movq %rsp, %rdx saves the current stack pointer in the %rdx register. The %rsp register contains the address of the top of the stack, so this instruction effectively saves the address of the stack. Moreover, the instruction pushq %rdx pushes the address of the stack onto the stack itself. This is needed as the second argument to the execve system call later. Furthermore, the instruction movabsq $0x0068732F6E69622F, %rax loads the string "/bin/sh" into the %rax register. In addition, the instruction pushq %rax pushes the address of the string "/bin/sh" onto the stack. This is needed as the first argument to the execve system call later. The instruction movq %rsp, %rdi then saves the address of the string "/bin/sh" in the %rdi register. This register will be used as the first argument to the execve system call later. Lastly, the instruction movq $59, %rax sets the %rax register to the value 59, which is the system call number for execve.
 
 
-## 3) Report on how many bytes total are in your assembly, and include the whole thing in ascii
+## 3) Report on how many bytes total are in your assembly, and including of the whole thing in ascii
 
 My shellcode is 38 bytes long. Here they are:
-f348484874ff48c3fff20ff368f290f368f290f368f290f368f290f368f290f368f290off3f20ff3f20ff3f20ff3f20ff3f20ff3f20ff331495e48485054453148fff46600f3c3660090b84874b84874bfff66c366000fbe48484848484874b84874bfffc366000ff380755548e8c65dc390c366000ff3ebf355484889486400483148484848e848480075484848484848b8e8b8e9484848babe48e8894848e8484848b8e883758b48894848b8e8b8eb4848e848b8ff48b848640074e8c9c3f34848c3
+6a 00 48 89 e2 52 48 89 e6 48 89 e2 48 b8 2f 62 69 6e 2f 73 68 50 48 89 e7 48 c7 c0 3b 00 00 00 48 31 db 0f 05
 
 **ASCII:** 
 
